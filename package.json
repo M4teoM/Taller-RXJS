@@ -1,0 +1,25 @@
+{
+  "name": "taller-rxjs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Esqueleto para trabajar un taller de RxJS de forma guiada",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "check": "tsc --noEmit",
+    "ej1": "tsx src/ejercicios/01-observables.ts",
+    "ej2": "tsx src/ejercicios/02-operadores-transformacion.ts",
+    "ej3": "tsx src/ejercicios/03-operadores-filtrado.ts",
+    "ej4": "tsx src/ejercicios/04-combinacion.ts",
+    "ej5": "tsx src/ejercicios/05-subjects.ts",
+    "ej6": "tsx src/ejercicios/06-manejo-errores.ts",
+    "ej7": "tsx src/ejercicios/07-angular-httpclient-simulacion.ts"
+  },
+  "dependencies": {
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
