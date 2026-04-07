@@ -6,6 +6,7 @@
   "scripts": {
     "start": "tsx src/index.ts",
     "social": "node social/server.js",
+    "social:ng": "npm --prefix social-angular start",
     "check": "tsc --noEmit",
     "ej1": "tsx src/ejercicios/01-observables.ts",
     "ej2": "tsx src/ejercicios/02-operadores-transformacion.ts",
