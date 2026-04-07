@@ -24,9 +24,17 @@ npm run ej7
 npm run social
 ```
 
-Luego abre en tu navegador: http://127.0.0.1:5173
+Luego abre en tu navegador: http://127.0.0.1:5174
 
-## 4) Verificacion de tipos
+## 4) Demo social migrada a Angular
+
+```bash
+npm run social:ng
+```
+
+Luego abre en tu navegador: http://localhost:4200
+
+## 5) Verificacion de tipos
 
 ```bash
 npm run check
@@ -38,3 +46,4 @@ npm run check
 - `src/ejercicios/`: archivos base de cada tema.
 - `src/recursos/`: datos y utilidades compartidas.
 - `social/`: mini app UI tipo red social con busqueda reactiva.
+- `social-angular/`: version migrada a Angular de la app social.

@@ -1,0 +1,98 @@
+<main class="app-shell">
+  <div class="background-glow bg-a" aria-hidden="true"></div>
+  <div class="background-glow bg-b" aria-hidden="true"></div>
+
+  <section class="panel left-panel">
+    <header class="brand-header">
+      <p class="eyebrow">Taller RxJS</p>
+      <h1>Social RX</h1>
+      <p class="subtitle">Red social del taller en Angular</p>
+    </header>
+
+    <label class="search-label" for="searchInput">Buscar usuario</label>
+    <input
+      id="searchInput"
+      class="search-input"
+      type="search"
+      placeholder="Ej: ana, medellin, frontend"
+      autocomplete="off"
+      [formControl]="searchControl"
+    />
+
+    @if (resultCount$ | async; as resultCount) {
+      <p class="result-count">{{ resultCount }} resultado{{ resultCount === 1 ? '' : 's' }}</p>
+    }
+
+    @if ((filteredUsers$ | async); as list) {
+      @if ((selectedUserIdSignal | async); as selectedId) {
+        <ul class="user-list" aria-live="polite">
+          @for (user of list; track user.id; let index = $index) {
+            <li>
+              <button
+                class="user-item"
+                [class.is-active]="isSelected(user.id, selectedId)"
+                [style.animation-delay]="(index * 40) + 'ms'"
+                (click)="selectUser(user.id)"
+                type="button"
+              >
+                <span class="avatar" [style.background]="user.color">{{ getInitials(user.name) }}</span>
+                <span>
+                  <span class="user-name">{{ user.name }}</span>
+                  <span class="user-handle">{{ user.handle }} - {{ user.city }}</span>
+                </span>
+              </button>
+            </li>
+          }
+        </ul>
+      }
+    }
+  </section>
+
+  <section class="panel right-panel">
+    @if ((selectedUser$ | async); as user) {
+      <article class="profile-card" aria-live="polite">
+        <div class="profile-top">
+          <div class="profile-avatar" [style.background]="user.color">{{ getInitials(user.name) }}</div>
+          <div>
+            <h2 class="profile-name">{{ user.name }}</h2>
+            <p class="profile-handle">{{ user.handle }} - {{ user.city }}</p>
+            <span class="badge">{{ user.verified ? 'Verificado' : 'Miembro' }} - {{ user.role }}</span>
+          </div>
+        </div>
+
+        <p class="profile-bio">{{ user.bio }}</p>
+
+        <div class="profile-meta">
+          <article class="meta-box">
+            <p class="meta-label">Seguidores</p>
+            <p class="meta-value">{{ formatCompactNumber(user.followers) }}</p>
+          </article>
+          <article class="meta-box">
+            <p class="meta-label">Seguidos</p>
+            <p class="meta-value">{{ formatCompactNumber(user.following) }}</p>
+          </article>
+          <article class="meta-box">
+            <p class="meta-label">Posts</p>
+            <p class="meta-value">{{ user.posts.length }}</p>
+          </article>
+        </div>
+      </article>
+
+      <section>
+        <h2 class="section-title">Publicaciones recientes</h2>
+        <div class="post-grid">
+          @for (post of user.posts; track post.id; let index = $index) {
+            <article class="post-card" [style.animation-delay]="(index * 70) + 'ms'">
+              <h3 class="post-title">{{ post.title }}</h3>
+              <p class="post-content">{{ post.content }}</p>
+            </article>
+          }
+        </div>
+      </section>
+    } @else {
+      <article class="empty-state">
+        Escribe en el buscador para ver perfiles y publicaciones.
+      </article>
+    }
+  </section>
+</main>
