@@ -339,3 +339,14 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.found-summary {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-top: 0.75rem; padding: 0.6rem 0.75rem;
+  border: 1px solid var(--line); border-radius: var(--radius-md);
+  background: #fffdf9;
+}
+.found-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  object-fit: cover; border: 2px solid var(--accent);
+}
