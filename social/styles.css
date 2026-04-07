@@ -1,0 +1,365 @@
+/* Variables de tema: color, sombras y radios reutilizables. */
+:root {
+  --bg: #f6efe8;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: #fffdf9;
+  --text: #111111;
+  --muted: #5f5a52;
+  --accent: #ef7f45;
+  --accent-2: #0f766e;
+  --line: rgba(17, 17, 17, 0.12);
+  --shadow: 0 14px 36px rgba(17, 17, 17, 0.14);
+  --radius-xl: 24px;
+  --radius-md: 14px;
+}
+
+/* Reset minimo para controlar el modelo de caja en toda la UI. */
+* {
+  box-sizing: border-box;
+}
+
+/* Fondo general con gradientes para dar contexto visual a la pagina. */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Sora", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 20% 15%, rgba(239, 127, 69, 0.2), transparent 34%),
+    radial-gradient(circle at 85% 5%, rgba(15, 118, 110, 0.18), transparent 32%),
+    linear-gradient(145deg, #f9f4ec 0%, #f3ede6 100%);
+}
+
+/* Brillos decorativos del fondo. */
+.background-glow {
+  position: fixed;
+  width: 24rem;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  filter: blur(40px);
+  z-index: -1;
+  opacity: 0.34;
+}
+
+/* Posicion especifica del brillo superior izquierdo. */
+.bg-a {
+  top: -5rem;
+  left: -2rem;
+  background: #ef7f45;
+}
+
+/* Posicion especifica del brillo inferior derecho. */
+.bg-b {
+  right: -4rem;
+  bottom: -5rem;
+  background: #0f766e;
+}
+
+/* Layout principal en dos columnas (lista y perfil). */
+.app-shell {
+  width: min(1200px, 94vw);
+  margin: 2.2rem auto;
+  display: grid;
+  grid-template-columns: minmax(270px, 360px) 1fr;
+  gap: 1.2rem;
+}
+
+/* Tarjeta base compartida por ambos paneles. */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+/* Columna izquierda: cabecera, buscador y listado. */
+.left-panel {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 78vh;
+}
+
+/* Columna derecha: perfil y publicaciones. */
+.right-panel {
+  padding: 1.2rem;
+  min-height: 78vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+}
+
+/* Titulo principal de marca. */
+.brand-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+/* Texto corto superior con estilo tecnico. */
+.eyebrow {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Subtitulo descriptivo. */
+.subtitle {
+  margin-top: 0.65rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* Etiqueta del campo de busqueda. */
+.search-label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+/* Input principal de busqueda. */
+.search-input {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  background: var(--surface-strong);
+  font-size: 0.95rem;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+/* Estado de foco para mejorar accesibilidad visual. */
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* Contador de resultados filtrados. */
+.result-count {
+  margin: 0.8rem 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Contenedor de items de usuario. */
+.user-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+  overflow: auto;
+}
+
+/* Tarjeta interactiva de un usuario en la lista. */
+.user-item {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #fffcf8;
+  padding: 0.75rem;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  align-items: center;
+  text-align: left;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+/* Realce al pasar el mouse. */
+.user-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(239, 127, 69, 0.5);
+}
+
+/* Estado visual para el usuario seleccionado. */
+.user-item.is-active {
+  background: linear-gradient(120deg, rgba(239, 127, 69, 0.15), rgba(15, 118, 110, 0.08));
+  border-color: rgba(15, 118, 110, 0.45);
+}
+
+/* Avatar circular usado en lista. */
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+/* Nombre del usuario en listado. */
+.user-name {
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+/* Handle y ciudad del usuario. */
+.user-handle {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* Tarjeta superior de perfil. */
+.profile-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: #fffefb;
+  padding: 1rem;
+  animation: fadeUp 320ms ease both;
+}
+
+/* Encabezado del perfil con avatar + datos. */
+.profile-top {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+/* Avatar grande del perfil seleccionado. */
+.profile-avatar {
+  width: 62px;
+  height: 62px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+/* Nombre principal en detalle de perfil. */
+.profile-name {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: -0.03em;
+}
+
+/* Handle/city en el bloque de perfil. */
+.profile-handle {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Badge de estado (verificado/miembro + rol). */
+.badge {
+  display: inline-block;
+  margin-top: 0.35rem;
+  background: rgba(15, 118, 110, 0.13);
+  color: #0b5d57;
+  border: 1px solid rgba(15, 118, 110, 0.25);
+  border-radius: 999px;
+  padding: 0.18rem 0.55rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.74rem;
+}
+
+/* Biografia corta del usuario. */
+.profile-bio {
+  margin: 0.95rem 0;
+  color: #2c2925;
+  line-height: 1.55;
+}
+
+/* Grid de metricas (seguidores/seguidos/posts). */
+.profile-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+/* Caja individual de metrica. */
+.meta-box {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.55rem;
+  background: #fffdf9;
+}
+
+/* Etiqueta de la metrica. */
+.meta-label {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* Valor numerico de la metrica. */
+.meta-value {
+  margin: 0.2rem 0 0;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Titulo de la seccion de publicaciones. */
+.section-title {
+  margin: 0.2rem 0 0.7rem;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+/* Grid de publicaciones recientes. */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+/* Tarjeta de cada publicacion. */
+.post-card {
+  border: 1px solid var(--line);
+  background: #fffdf9;
+  border-radius: 14px;
+  padding: 0.75rem;
+  min-height: 110px;
+  animation: fadeUp 340ms ease both;
+}
+
+/* Titulo de post. */
+.post-title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.96rem;
+}
+
+/* Contenido descriptivo del post. */
+.post-content {
+  margin: 0.45rem 0 0;
+  color: #322e2b;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+/* Mensaje de estado vacio en listados. */
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  padding: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Animacion suave de entrada vertical. */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

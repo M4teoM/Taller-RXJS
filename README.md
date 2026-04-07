@@ -15,9 +15,18 @@ npm run ej3
 npm run ej4
 npm run ej5
 npm run ej6
+npm run ej7
 ```
 
-## 3) Verificacion de tipos
+## 3) Demo social (una sola pantalla, sin enrutamiento)
+
+```bash
+npm run social
+```
+
+Luego abre en tu navegador: http://127.0.0.1:5173
+
+## 4) Verificacion de tipos
 
 ```bash
 npm run check
@@ -28,3 +37,4 @@ npm run check
 - `src/index.ts`: punto de entrada general.
 - `src/ejercicios/`: archivos base de cada tema.
 - `src/recursos/`: datos y utilidades compartidas.
+- `social/`: mini app UI tipo red social con busqueda reactiva.

@@ -5,6 +5,7 @@
   "description": "Esqueleto para trabajar un taller de RxJS de forma guiada",
   "scripts": {
     "start": "tsx src/index.ts",
+    "social": "node social/server.js",
     "check": "tsc --noEmit",
     "ej1": "tsx src/ejercicios/01-observables.ts",
     "ej2": "tsx src/ejercicios/02-operadores-transformacion.ts",

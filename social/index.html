@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Metadatos base de la pantalla -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social RX - Pantalla Unica</title>
+
+    <!-- Tipografias para identidad visual -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Estilos de toda la interfaz -->
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- Elementos decorativos del fondo -->
+    <div class="background-glow bg-a" aria-hidden="true"></div>
+    <div class="background-glow bg-b" aria-hidden="true"></div>
+
+    <!-- Contenedor principal de la unica pantalla -->
+    <main class="app-shell">
+      <!-- Columna izquierda: busqueda y listado -->
+      <section class="panel left-panel">
+        <header class="brand-header">
+          <p class="eyebrow">Taller RxJS</p>
+          <h1>Social RX</h1>
+          <p class="subtitle">Red social del taler</p>
+        </header>
+
+        <label class="search-label" for="searchInput">Buscar usuario</label>
+        <input
+          id="searchInput"
+          class="search-input"
+          type="search"
+          placeholder="Ej: ana, medellin, frontend"
+          autocomplete="off"
+        />
+
+        <!-- Muestra la cantidad de coincidencias actuales -->
+        <p id="resultCount" class="result-count">0 resultados</p>
+
+        <!-- Lista reactiva de usuarios filtrados -->
+        <ul id="userList" class="user-list" aria-live="polite"></ul>
+      </section>
+
+      <!-- Columna derecha: detalle de perfil y posts -->
+      <section class="panel right-panel">
+        <!-- Se rellena desde app.js cuando hay usuario seleccionado -->
+        <article id="profileCard" class="profile-card" aria-live="polite"></article>
+        <section>
+          <h2 class="section-title">Publicaciones recientes</h2>
+          <!-- Se rellena con las publicaciones del usuario activo -->
+          <div id="postGrid" class="post-grid"></div>
+        </section>
+      </section>
+    </main>
+
+    <!-- Logica de la app con RxJS -->
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
